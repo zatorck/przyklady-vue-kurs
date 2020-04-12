@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="app">
-    <p>{{ price | currencyFormatter('$') }}</p>
+    <p>{{ price | currencyFormatter() }}</p>
     <p>{{ price | currencyFormatter('*') }}</p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -18,7 +18,7 @@
             price: 12345,
         },
         filters: {
-            currencyFormatter(value, symbol) {
+            currencyFormatter(value, symbol= '$') {
                 return symbol + (value / 100).toFixed(2)
             }
         }

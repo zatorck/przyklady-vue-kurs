@@ -7,6 +7,7 @@
 <body>
 <div id="app">
     <example-component></example-component>
+    <example-component></example-component>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
@@ -14,11 +15,12 @@
 
 
     Vue.component('example-component', {
-        template: '<p>{{parzyste}}</p>',
+        template: '<p>{{parzyste}} {{number}} <button @click="number++">go</button></p>',
         // używamy funkcji a nie obiektu bo kompnenty mogą być reużywalne, dlatego nie chcemy wspólnych  danych dla wszyztkich używanych komponentów
         data() {
             return {
-                numbers: [1, 2, 3, 4]
+                numbers: [1, 2, 3, 4],
+                number: 0
             }
         },
         computed: {

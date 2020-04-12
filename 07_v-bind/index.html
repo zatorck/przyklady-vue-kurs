@@ -6,15 +6,19 @@
 </head>
 <body>
 <div id="app">
-    <button ref="buttonref">button</button>
+   <input v-bind:type="type">
+<!--    skrócona wersja-->
+   <input :type="number">
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 <script>
-    let vm = new Vue({
+    new Vue({
         el: '#app',
-        mounted(){
-            console.log(this.$refs.buttonref.hidden = true)
+        data: {
+            type: 'password',
+            number: 'number'
         }
     })
 </script>

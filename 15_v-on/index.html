@@ -19,8 +19,13 @@
         data: {
             count: 0
         },
+        computed: {
+            adding () {
+                return this.count++
+            }
+        },
         methods: {
-            add() {
+            add () {
                 this.count++
             }
         }

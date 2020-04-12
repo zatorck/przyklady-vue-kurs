@@ -7,7 +7,11 @@
 <body>
 <div id="app">
     <p>Suma liczb: {{added}}</p>
+    {{added}}
+    {{addedMethod()}}
+    {{addedMethod()}}
 <button v-on:click="addToNumbers()">Dodaj element</button>
+<button v-on:click="nicciekawe()">Nic ciekawego</button>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
@@ -20,12 +24,22 @@
         // COMPUTED PROPERTIS SĄ CACHOWANE
         computed: {
             added() {
+                console.log('jestem w computed properties')
                 return this.numbers.reduce((sum, val) => sum + val)
             }
         },
-        // Metody nie są cachowane
+        // Metody nie są cachowane  - używanie ich 3 razy wejdzie do funkcji 3 razy
         methods: {
+            addedMethod(){
+                console.log('jestem w metodach')
+
+                return this.numbers.reduce((sum, val) => sum + val)
+            },
+            nicciekawe() {
+                console.log('nic ciekawego')
+            },
             addToNumbers() {
+                // w przypadku wywołania funkcji ze zmienną numbers addedMethod i added są wykonwyane
                 this.numbers.push(5)
             }
         }

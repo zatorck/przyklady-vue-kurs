@@ -6,9 +6,7 @@
 </head>
 <body>
 <div id="app">
-   <input v-bind:type="type">
-<!--    skrócona wersja-->
-   <input :type="type">
+    {{ message }}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -17,7 +15,7 @@
     new Vue({
         el: '#app',
         data: {
-            type: 'password'
+            message: 'siema'
         }
     })
 </script>

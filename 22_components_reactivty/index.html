@@ -6,30 +6,39 @@
 </head>
 <body>
 <div id="app">
-    <example-component :seconds="seconds"></example-component>
+    <example-component :seconds.sync="globalSeconds"></example-component>
+    <example-component :seconds.sync="globalSeconds"></example-component>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
 <script>
     Vue.component('example-component', {
-        template: '<p>{{seconds}}</p>',
-        props:{
-            seconds:{
+        template: '<p>{{seconds}} <button @click="add">add</button> <button @click="addLocally">addLocally</button></p> ',
+        props: {
+            seconds: {
                 type: Number,
                 required: true
+            }
+        },
+        methods: {
+            add () {
+                this.$emit('update:seconds', this.seconds++)
+            },
+
+            addLocally () {
+                this.seconds++
             }
         }
     })
 
-
     let vm = new Vue({
         el: '#app',
-        data:{
-            seconds: 0
+        data: {
+            globalSeconds: 0
         },
-        created(){
-            setInterval(()=>{
-                this.seconds++
+        created () {
+            setInterval(() => {
+                this.globalSeconds++
             }, 1000)
         }
     })
