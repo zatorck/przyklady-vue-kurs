@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        /*
+         * Zaraz po utworzeniu nowej instacji
+         */
+        beforeCreate: {
+            // func code here
+        },
+        /*
+         * Tuż przed dodaniem elementów do drzewa DOM
+         */
+        created: {
+            // func code here
+        },
+        /*
+         * Kiedy elementy są gotowae do dodania do drzewa DOM
+         */
+        beforeMount: {
+            // func code here
+        },
+        /*
+         * Kiedy elementy sa utworzone ale nie koniecznie dodane do drzewa dom, aby mieć pewność, że są już dodane używamy Vue.nexTick(()=>{});
+         */
+        mounted: {
+            someFunc() {
+                Vue.nexTick(() => {
+                    // W tym miejscu elementy są już na pewno dodane do drzewa DOM
+                })
+            }
+        },
+        /*
+         * Przed zmiana na drzewie DOM
+         */
+        beforeUpdate: {
+            // func code here
+        },
+        /*
+         * Po zmianie na drzewie DOM
+         */
+        updated: {
+            // func code here
+        },
+        /*
+         * W momencie keidy obiekt jest
+         */
+        beforeDestroy: {
+            // func code here
+        },
+        /*
+         * Po zniszczeniu
+         */
+        destroyed: {
+            // func code here
+        }
+    })
+</script>
+</body>
+</html>

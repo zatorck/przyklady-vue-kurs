@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p v-if="hour <12">Jest rano</p>
+    <p v-else-if=" hour >= 12 && hour <18">Jest popołudnie</p>
+    <p v-else>Jest wieczór</p>
+    <p>{{hour}}:{{minutes}}:{{second}}</p>
+    <p>{{name}}</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data:{
+            hour: new Date().getHours(),
+            second: new Date().getSeconds(),
+            minutes: new Date().getMinutes(),
+            name: 'Piotr'
+        }
+    })
+</script>
+</body>
+</html>

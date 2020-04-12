@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <example-component font-color="red" size=54 ></example-component>
+</div>
+// Musiałem zmienić cdna  - do doczytania czemu
+
+<script src="https://unpkg.com/vue"></script>
+
+<script>
+
+
+    Vue.component('example-component', {
+        template: '<p class="font" :style="style">No i co</p>',
+        props: {
+            fontColor: {
+                type: String,
+                required: true
+            },
+            size: {
+                type: Number,
+                default: 54
+            }
+        },
+        computed: {
+            style() {
+                return {
+                    color: this.fontColor,
+                    fontSize:  this.size + 'px'
+                };
+            }
+        }
+    })
+
+
+    let vm = new Vue({
+        el: '#app',
+    })
+</script>
+</body>
+</html>

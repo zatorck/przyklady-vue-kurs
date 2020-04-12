@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<p v-changer="500">Ten tekst </p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {},
+        directives: {
+            changer: {
+                bind(el, time) {
+                    let redColor = true;
+                    setInterval(() => {
+                        redColor = !redColor
+                        el.style.color = redColor ? 'red' : 'blue'
+                    }, time.value || 1000)
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

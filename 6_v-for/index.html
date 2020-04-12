@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="name in names">{{name}}</li>
+    </ul>
+    <ul>
+        <li v-for="(club, city) in clubs">{{club}} -  {{city}}</li>
+    </ul>
+    <ul>
+        <li v-for="n in 20">{{n}}</li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            names: ['ee', 'pio', 'mi'],
+            clubs:{
+                london: 'Aresnal',
+                barcelona: 'FC'
+            }
+        }
+    })
+</script>
+</body>
+</html>

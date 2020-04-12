@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <example-component :seconds="seconds"></example-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    Vue.component('example-component', {
+        template: '<p>{{seconds}}</p>',
+        props:{
+            seconds:{
+                type: Number,
+                required: true
+            }
+        }
+    })
+
+
+    let vm = new Vue({
+        el: '#app',
+        data:{
+            seconds: 0
+        },
+        created(){
+            setInterval(()=>{
+                this.seconds++
+            }, 1000)
+        }
+    })
+</script>
+</body>
+</html>

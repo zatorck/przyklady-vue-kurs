@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>{{all}}</p>
+    <example-component v-on:add="addAll"></example-component>
+    <example-component v-on:add="addAll"></example-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    Vue.component('example-component', {
+        template: '<button v-on:click="addCounter">{{counter}}</button>',
+        data() {
+            return {
+                counter: 0
+            }
+        },
+        methods: {
+            addCounter() {
+                this.counter++
+                this.$emit('add')
+            }
+        }
+    })
+
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            all: 0
+        },
+        methods: {
+            addAll() {
+                this.all++
+            }
+        }
+    })
+</script>
+</body>
+</html>

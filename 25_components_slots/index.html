@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <example-component>Button text</example-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    Vue.component('example-component', {
+        template: '<button><slot>Default button text</slot></button>'
+    })
+
+    let vm = new Vue({
+        el: '#app',
+        data: {}
+    })
+</script>
+</body>
+</html>

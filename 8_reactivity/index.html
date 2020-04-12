@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>{{seconds}}</p>
+    <input type="text" v-model="text">
+    {{text }}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            seconds: 0,
+            tab: [1, 2, 3, 4],
+            text: 'domyślna wartość'
+        },
+        created() {
+            setInterval(() => {
+                this.seconds++;
+            }, 1000)
+        }
+    })
+    Vue.set(vm.tab, 2, "Nowa wartosć")
+
+    console.log(vm.tab);
+</script>
+</body>
+</html>

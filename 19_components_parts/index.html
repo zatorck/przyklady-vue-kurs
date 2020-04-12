@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <example-component></example-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+
+
+    Vue.component('example-component', {
+        template: '<p>{{parzyste}}</p>',
+        // używamy funkcji a nie obiektu bo kompnenty mogą być reużywalne, dlatego nie chcemy wspólnych  danych dla wszyztkich używanych komponentów
+        data() {
+            return {
+                numbers: [1, 2, 3, 4]
+            }
+        },
+        computed: {
+            parzyste() {
+                return this.numbers.filter((number) => number % 2 === 0)
+            }
+        }
+    })
+
+    let vm = new Vue({
+        el: '#app',
+    })
+</script>
+</body>
+</html>

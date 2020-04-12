@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>Suma liczb: {{added}}</p>
+<button v-on:click="addToNumbers()">Dodaj element</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            numbers: [1, 2, 3]
+        },
+        // COMPUTED PROPERTIS SĄ CACHOWANE
+        computed: {
+            added() {
+                return this.numbers.reduce((sum, val) => sum + val)
+            }
+        },
+        // Metody nie są cachowane
+        methods: {
+            addToNumbers() {
+                this.numbers.push(5)
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

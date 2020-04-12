@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <my-first-component></my-first-component>
+    <my-second-component></my-second-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+
+    const MyFirstComponent = {
+        template: '<p>Moj komponfente</p>'
+    }
+
+
+    Vue.component('my-second-component', {
+        template: '<p>Drugi compotnent</p>'
+    })
+
+
+    let vm = new Vue({
+        el: '#app',
+        components: {
+            MyFirstComponent
+        }
+    })
+</script>
+</body>
+</html>

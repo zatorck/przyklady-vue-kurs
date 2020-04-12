@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p v-if="true">to sie pokaze</p>
+    <p v-if="false">to sie nie pokaze</p>
+
+    <p v-show="true">to sie pokaze</p>
+    <p v-show="false">to sie nie pokaze - bo bedzie mialo display none</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+        }
+    })
+</script>
+</body>
+</html>

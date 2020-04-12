@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>Pierwszy {{cars[0]}}</p>
+    <p>{{cars}}</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cars: [
+                "BMW",
+                "Audi",
+                "Mercedes"
+            ]
+        }
+    })
+</script>
+</body>
+</html>

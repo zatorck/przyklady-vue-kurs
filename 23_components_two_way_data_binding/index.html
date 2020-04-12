@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <example-component v-bind:time.sync="seconds"></example-component>
+    <!--     Zapis równoznaczy z górnym zapisem-->
+    <!--    <example-component v-bind:time="seconds" v-on:update:time="val => seconds = val"></example-component>-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+
+
+    Vue.component('example-component', {
+        template: '<div><p>Czas {{tempTime}}<p><p>Czas {{time}}</p></div>',
+        props: {
+            time: {
+                type: Number,
+                required: true,
+            }
+        },
+        computed: {
+            tempTime: {
+                get() {
+                    return this.time
+                },
+                set(value) {
+                    console.log(value)
+                    this.$emit('update:time', value)
+                }
+            }
+        },
+        mounted() {
+            setInterval(() => {
+                this.tempTime++
+            }, 1000)
+        }
+    })
+
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            seconds: 0
+        }
+    })
+</script>
+</body>
+</html>

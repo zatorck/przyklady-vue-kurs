@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <example-component></example-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    const mixin = {
+        created() {
+            console.log('hello from mixin')
+        },
+        methods: {
+            test(){
+                console.log('hello from mixing test method')
+            }
+        }
+    }
+    // Ważne z mixinsów metody mają mniejszy priorytet
+    Vue.component('example-component', {
+        template: '<p>comp</p>',
+        mixins: [mixin],
+        created() {
+            this.hello();
+        },
+        methods: {
+            hello() {
+                console.log('hello from componetnet')
+                this.test()
+            }
+        }
+    })
+
+    let vm = new Vue({
+        el: '#app',
+        data: {}
+    })
+</script>
+</body>
+</html>

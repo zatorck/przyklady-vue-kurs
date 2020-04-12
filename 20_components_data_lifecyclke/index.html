@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <example-component color="red" size="44"></example-component>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+
+
+    Vue.component('example-component', {
+        template: '<p class="font" :style="style">No i co</p>',
+        props: ['color', 'size'],
+        computed: {
+            style() {
+                return {
+                    color: this.color,
+                    fontSize:  this.size + 'px'
+                };
+            }
+        }
+    })
+
+
+    let vm = new Vue({
+        el: '#app',
+    })
+</script>
+</body>
+</html>
