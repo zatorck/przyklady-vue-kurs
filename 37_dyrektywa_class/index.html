@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .czcionka {
+            font-size: 24px;
+        }
+
+        .kolor {
+            color: red;
+        }
+
+        .tlo {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p class="czcionka" v-bind:class="{kolor: true, tlo: false}">Elo</p>
+    <p class="czcionka" v-bind:class="obkietKlasy">Elo</p>
+    <p class="czcionka" v-bind:class="obkietKlasy2">Elo</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data:{
+            obkietKlasy:{
+                kolor:true,
+                tlo: true
+            },
+            obkietKlasy2:['kolor', 'tlo']
+        }
+    })
+</script>
+</body>
+</html>

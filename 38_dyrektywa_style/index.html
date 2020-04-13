@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <p class="czcionka" v-bind:style="{color: red, backgroundColor: blue}">Elo</p>
+    <p class="czcionka" v-bind:style="obiektStyli">Elo</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            red: 'red',
+            blue: 'blue',
+            obiektStyli: {
+                color: 'blue',
+                backgroundColor: 'red'
+            },
+        }
+    })
+</script>
+</body>
+</html>
