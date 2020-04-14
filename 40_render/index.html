@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <test-component>
+        <slot name="przykladowySlot">sdsdfdss</slot>
+        sadsa
+    </test-component>
+    <dom-props></dom-props>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    Vue.component('dom-props', {
+        render(createElement) {
+            return createElement('h1', {
+                domProps: {
+                    innerHTML: 'jakiś teskt'
+                }
+            })
+        }
+    })
+
+    Vue.component('test-component', {
+        render(createElement) {
+            return createElement(this.tag,
+                {
+                    on: {
+                        click: this.powitac
+                    },
+                    props: {
+                        foo: 'bar', // todo nie wiem jak to działa
+                    },
+                    slot: 'przykladowySlot', // todo nie wiem jak to działa,
+                    ref: 'przkladowyRed',
+                    class: ['jakas-klasa', {'pogrubiony-Ya': true}],
+                    style: {backgroundColor: 'blue'}
+                }, this.$slots.default)
+        },
+        methods: {
+            powitac() {
+                alert('Powitać')
+                this.$refs.przkladowyRed.hidden = true;
+
+            }
+        },
+        props: {
+            text: {
+                default: 'Siema świecie'
+            }
+        },
+        data: function () {
+            return {
+                tag: 'button'
+            }
+        }
+    })
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            componentText: 'Witaj świecie'
+        }
+    })
+</script>
+</body>
+</html>

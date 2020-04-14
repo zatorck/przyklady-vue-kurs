@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #123;
+            color: #FFF;
+            font-family: 'Bungee Hairline';
+            max-width: 300px;
+            margin: 0 auto;
+            padding-top: 200px;
+        }
+
+        .display {
+            text-align: right;
+            border-bottom: 1px solid #abc;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .row .col,
+        .row .col-6,
+        .row .col-9 {
+            padding-left: 2px;
+            padding-right: 2px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="container">
+        <div class="display">{{display}}</div>
+        <div class="row no-gutters">
+            <div class="col">
+                <button class="btn btn-primary btn-block" @click="clean">C</button>
+            </div>
+            <div class="col-6">
+
+            </div>
+
+            <div class="col">
+                <button class="btn btn-secondary  btn-block" @click="operator= '+'">+</button>
+            </div>
+        </div>
+        <div class="row  no-gutters">
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="setNum('7')">7</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="setNum('8')">8</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="setNum('9')">9</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="operator= '-'">-</button>
+            </div>
+        </div>
+        <div class="row  no-gutters">
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="setNum('4')">4</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="setNum('5')">5</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="setNum('6')">6</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="operator= '*'">*</button>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="setNum('1')">1</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="setNum('2')">2</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="setNum('3')">3</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="operator= '/'">/</button>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-6">
+                <button class="btn btn-secondary btn-block" @click="setNum('0')">0</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary  btn-block" @click="setNum('.')">.</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-secondary btn-block" @click="calc()">=</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            a: '',
+            b: '',
+            sum: 0,
+            display: 0,
+            operator: null
+        },
+        methods: {
+            setNum(num) {
+                if (this.operator === null) {
+                    this.a += num;
+                    this.display = this.a;
+                } else {
+                    this.b += num;
+                    this.display = this.b
+                }
+            },
+            calc() {
+                switch (this.operator) {
+                    case '+':
+                        this.sum = parseFloat(this.a) + parseFloat(this.b);
+                        break
+                    case '-':
+                        this.sum = parseFloat(this.a) - parseFloat(this.b);
+                        break
+                    case '*':
+                        this.sum = parseFloat(this.a) * parseFloat(this.b);
+                        break
+                    case '/':
+                        this.sum = parseFloat(this.a) / parseFloat(this.b);
+                        break
+                }
+                this.display = this.sum;
+                this.a = '' + this.sum + '';
+                this.b = '';
+                this.operator = null
+            },
+            clean() {
+                this.a = '';
+                this.b = '';
+                this.sum = 0;
+                this.display = 0;
+                this.operator = null;
+            }
+        }
+    })
+</script>
+</body>
+</html>
